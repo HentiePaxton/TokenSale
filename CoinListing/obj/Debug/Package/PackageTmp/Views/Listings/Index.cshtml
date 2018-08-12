@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CoinListing.Models.Listing>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CoinName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WebSiteLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoinName)
+            </td>
+            <td>
+                @Html.Raw(item.Short_Description)
+            </td>
+            <td>
+                <a href="@item.WebSiteLink">@Html.DisplayFor(modelItem => item.WebSiteLink)</a>
+            </td>
+            <td>
+                <img src="@Url.Content(item.Image)" style="width:70px" ; />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PK_ListingID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PK_ListingID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PK_ListingID })
+            </td>
+        </tr>
+    }
+
+</table>

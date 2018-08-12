@@ -1,0 +1,126 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+hr {
+    border: 1px solid lightblue;
+}
+
+.progress {
+    height: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.listinCard {
+    /*border: 1px solid lightblue;
+    box-shadow: lightblue 1px;*/
+    /*margin: 5px;
+    padding: 5px;*/
+    padding: 5px;
+}
+
+    .listinCard > div {
+        border: 1.5px solid darkblue;
+        box-shadow: lightblue 1px;
+        padding: 5px;
+    }
+
+
+.CardLink {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: black;
+}
+
+    .CardLink:hover {
+        background-color: lightblue;
+        text-decoration: none;
+    }
+
+.CardDetails {
+    margin: 5px;
+}
+
+/*.Gold_Status {
+    border: 5px solid gold !important;
+}
+
+.Silver_Status {
+
+    border: 5px solid silver  !important;
+
+}*/
+
+
+.Ribbon.Gold_Status {
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%) !important;
+    border: none !important;
+}
+
+
+
+
+.Ribbon.Silver_Status {
+    background: radial-gradient(ellipse farthest-corner at right bottom, gray 0%, #D6D5D3 30%, Silver 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, silver 8%, #D6D5D3 25%, gray 62.5%, silver 100%) !important;
+    border: none !important;
+}
+
+
+.navbar-inverse {
+    background-color: darkblue;
+    border-color: #080808;
+}
+
+    .navbar-inverse .navbar-brand {
+        color: white;
+    }
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: white;
+    }
+
+#SubscribeEmail {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.Ribbon {
+    padding: 15px;
+    height: 20px;
+    clip-path: polygon(100% 0, 95% 50%, 100% 100%, 0% 100%, 5% 50%, 0% 0%);
+    font-family: "font_condensed";
+    text-transform: uppercase;
+    background: white;
+    color: #dddeda;
+    letter-spacing: 0.18em;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+}

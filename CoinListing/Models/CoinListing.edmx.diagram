@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3910d8440adf4b37988cd61194d0834e" Name="Diagram1" >
+        <EntityTypeShape EntityType="CoinListingModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="6.875" />
+        <EntityTypeShape EntityType="CoinListingModel.AspNetRole" Width="1.5" PointX="5.75" PointY="2.625" />
+        <EntityTypeShape EntityType="CoinListingModel.AspNetUserClaim" Width="1.5" PointX="10.25" PointY="3.75" />
+        <EntityTypeShape EntityType="CoinListingModel.AspNetUserLogin" Width="1.5" PointX="10.25" PointY="1.25" />
+        <EntityTypeShape EntityType="CoinListingModel.AspNetUser" Width="1.5" PointX="8" PointY="1.5" />
+        <EntityTypeShape EntityType="CoinListingModel.Listing" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="CoinListingModel.ListingStage" Width="1.5" PointX="0.75" PointY="7.25" />
+        <EntityTypeShape EntityType="CoinListingModel.Progress" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="CoinListingModel.Status" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CoinListingModel.Subscription" Width="1.5" PointX="7.75" PointY="6.875" />
+        <AssociationConnector Association="CoinListingModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CoinListingModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CoinListingModel.FK_Listing_ListingStage" />
+        <AssociationConnector Association="CoinListingModel.FK_Listing_Progress" />
+        <AssociationConnector Association="CoinListingModel.FK_Listing_Status" />
+        <AssociationConnector Association="CoinListingModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

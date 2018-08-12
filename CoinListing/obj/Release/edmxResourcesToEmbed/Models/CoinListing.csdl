@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CoinListingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CoinListingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="CoinListingModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="CoinListingModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="CoinListingModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="CoinListingModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="CoinListingModel.AspNetUser" />
+    <EntitySet Name="Listings" EntityType="CoinListingModel.Listing" />
+    <EntitySet Name="ListingStages" EntityType="CoinListingModel.ListingStage" />
+    <EntitySet Name="Progresses" EntityType="CoinListingModel.Progress" />
+    <EntitySet Name="Status" EntityType="CoinListingModel.Status" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="CoinListingModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="CoinListingModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Listing_ListingStage" Association="CoinListingModel.FK_Listing_ListingStage">
+      <End Role="ListingStage" EntitySet="ListingStages" />
+      <End Role="Listing" EntitySet="Listings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Listing_Progress" Association="CoinListingModel.FK_Listing_Progress">
+      <End Role="Progress" EntitySet="Progresses" />
+      <End Role="Listing" EntitySet="Listings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Listing_Status" Association="CoinListingModel.FK_Listing_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Listing" EntitySet="Listings" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="CoinListingModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="CoinListingModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="CoinListingModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="CoinListingModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="CoinListingModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="CoinListingModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetRoles" Relationship="CoinListingModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <EntityType Name="Listing">
+    <Key>
+      <PropertyRef Name="PK_ListingID" />
+    </Key>
+    <Property Name="PK_ListingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CoinName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Short_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WebSiteLink" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FK_StatusID" Type="Int32" />
+    <Property Name="FK_ProgressID" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="PreStartDate" Type="DateTime" Precision="0" />
+    <Property Name="PreEndDate" Type="DateTime" Precision="0" />
+    <Property Name="WhitePaper" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalSupply" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SoftCap" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="HardCap" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="FK_ListingStageID" Type="Int32" />
+    <Property Name="VideoLink" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Rating" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Plaform" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BuyWith" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TwitterLink" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FacebookLink" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LinkedInLink" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TelegramLink" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="RedditLink" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ListingStage" Relationship="CoinListingModel.FK_Listing_ListingStage" FromRole="Listing" ToRole="ListingStage" />
+    <NavigationProperty Name="Progress" Relationship="CoinListingModel.FK_Listing_Progress" FromRole="Listing" ToRole="Progress" />
+    <NavigationProperty Name="Status" Relationship="CoinListingModel.FK_Listing_Status" FromRole="Listing" ToRole="Status" />
+  </EntityType>
+  <EntityType Name="ListingStage">
+    <Key>
+      <PropertyRef Name="PK_ListingStageID" />
+    </Key>
+    <Property Name="PK_ListingStageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ListingStage1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Listings" Relationship="CoinListingModel.FK_Listing_ListingStage" FromRole="ListingStage" ToRole="Listing" />
+  </EntityType>
+  <EntityType Name="Progress">
+    <Key>
+      <PropertyRef Name="PK_ProgressID" />
+    </Key>
+    <Property Name="PK_ProgressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Progress1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Listings" Relationship="CoinListingModel.FK_Listing_Progress" FromRole="Progress" ToRole="Listing" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="PK_StatusID" />
+    </Key>
+    <Property Name="PK_StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StatusLevel" Type="Int32" />
+    <NavigationProperty Name="Listings" Relationship="CoinListingModel.FK_Listing_Status" FromRole="Status" ToRole="Listing" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="CoinListingModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CoinListingModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="CoinListingModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CoinListingModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Listing_ListingStage">
+    <End Type="CoinListingModel.ListingStage" Role="ListingStage" Multiplicity="0..1" />
+    <End Type="CoinListingModel.Listing" Role="Listing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ListingStage">
+        <PropertyRef Name="PK_ListingStageID" />
+      </Principal>
+      <Dependent Role="Listing">
+        <PropertyRef Name="FK_ListingStageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Listing_Progress">
+    <End Type="CoinListingModel.Progress" Role="Progress" Multiplicity="0..1" />
+    <End Type="CoinListingModel.Listing" Role="Listing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Progress">
+        <PropertyRef Name="PK_ProgressID" />
+      </Principal>
+      <Dependent Role="Listing">
+        <PropertyRef Name="FK_ProgressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Listing_Status">
+    <End Type="CoinListingModel.Status" Role="Status" Multiplicity="0..1" />
+    <End Type="CoinListingModel.Listing" Role="Listing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="PK_StatusID" />
+      </Principal>
+      <Dependent Role="Listing">
+        <PropertyRef Name="FK_StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="CoinListingModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="CoinListingModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+</Schema>

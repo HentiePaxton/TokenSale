@@ -1,0 +1,197 @@
+﻿@model CoinListing.Models.Listing
+
+@{
+    ViewBag.Title = "Details";
+}
+@*@{
+        var CustomClass = "";
+        var RibbonText = "Basic";
+        var Progress = "";
+        if (Model.Status != null)
+        {
+            if (Model.Status.Status1 == "Gold")
+            {
+                CustomClass = "Gold_Status";
+                RibbonText = "Gold";
+            }
+            else if (Model.Status.Status1 == "Silver")
+            {
+                CustomClass = "Silver_Status";
+                RibbonText = "Silver";
+            }
+
+            else if (Model.Status.Status1 == "Red Hot Gold")
+            {
+                CustomClass = "RedHot_Status";
+                RibbonText = "Red Hot Gold";
+            }
+        }
+    }
+    <br/>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="Ribbon @CustomClass">@RibbonText</div>
+        </div>
+
+    </div>*@
+
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col mainDetails">
+            <img src="/@Url.Content(@Model.Image)" class="image_details" />
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 style="margin-top:10px; margin-bottom:5px;">@Model.CoinName</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>@Model.Short_Description</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 ">
+                    <h5 class="LevelStatus text-center">@Model.ListingStage.ListingStage1</h5>
+                    <div class="socialIcons">
+                        @if (Model.FacebookLink != null && Model.FacebookLink != "")
+                        {
+                            <a target="_blank" href="@Model.FacebookLink">
+                                <img src="~/icons/fb.png" />
+                            </a>
+                        }
+                        @if (Model.TwitterLink != null && Model.TwitterLink != "")
+                        {
+                            <a target="_blank" href="@Model.TwitterLink">
+                                <img src="~/icons/tw.png" />
+                            </a>
+                        }
+                        @if (Model.TelegramLink != null && Model.TelegramLink != "")
+                        {
+                            <a target="_blank" href="@Model.TelegramLink">
+                                <img src="~/icons/tg.png" />
+                            </a>
+                        }
+                        @if (Model.LinkedInLink != null && Model.LinkedInLink != "")
+                        {
+                            <a target="_blank" href="@Model.LinkedInLink">
+                                <img src="~/icons/li.png" />
+                            </a>
+                        }
+                        @if (Model.RedditLink != null && Model.RedditLink != "")
+                        {
+                            <a target="_blank" href="@Model.RedditLink">
+                                <img src="~/icons/rd.png" />
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5 class="secondheaders"><i class="glyphicon glyphicon-bullhorn"></i> Info</h5>
+                    <div class="">
+                        <label class="bold">Token: </label>
+                        <text>@Model.Token</text>
+                    </div>
+                    <div class="">
+                        <label class="bold">Platform: </label>
+                        <text>@Model.Plaform</text>
+                    </div>
+                    <div class="">
+                        <label class="bold">Buy with: </label>
+                        <text>@Model.BuyWith</text>
+                    </div>
+                    <div class="">
+                        <label class="bold">Website: </label>
+                        <a target="_blank" href="@Model.WebSiteLink">Website</a>
+                    </div>
+                    <div class="">
+                        <label class="bold">Whitepaper: </label>
+                        <a target="_blank" href="@Model.WhitePaper">Whitepaper</a>
+                    </div>
+                </div>
+
+                @if (Model.PreStartDate != null)
+                {
+                    <div class="col-sm-3">
+                        <h5 class="secondheaders"><i class="glyphicon glyphicon-time"></i> Pre-Sale</h5>
+                        <div class="">
+                            <label class="bold">Start Date : </label>
+                            <text>@Model.PreStartDate.Value.ToShortDateString()</text>
+                        </div>
+
+                        <div class="">
+                            <label class="bold">End Date : </label>
+                            <text>@Model.PreEndDate.Value.ToShortDateString()</text>
+                        </div>
+                    </div>
+                }
+
+                @if (Model.StartDate != null)
+                {
+                    <div class="col-sm-3">
+                        <h5 class="secondheaders"><i class="glyphicon glyphicon-flag"></i> Crowdsale</h5>
+                        <div class="">
+                            <label class="bold">Start Date : </label>
+                            <text>@Model.StartDate.Value.ToShortDateString()</text>
+                        </div>
+
+                        <div class="">
+                            <label class="bold">End Date : </label>
+                            <text>@Model.EndDate.Value.ToShortDateString()</text>
+                        </div>
+                    </div>
+                }
+
+                <div class="col-sm-3">
+                    <h5 class="secondheaders"><i class="glyphicon glyphicon-globe"></i> Numbers</h5>
+                    <div class="">
+                        <label class="bold">Price: </label>
+                        <text>@Model.Price</text>
+                    </div>
+                    <div class="">
+                        <label class="bold">Total Supply: </label>
+                        <text>@Model.TotalSupply</text>
+                    </div>
+                    <div class="">
+                        <label class="bold">SoftCap: </label>
+                        <text>@Model.SoftCap</text>
+                    </div>
+                    <div class="">
+                        <label class="bold">HardCap: </label>
+                        <text>@Model.HardCap</text>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (Model.VideoLink != null && Model.VideoLink != "")
+    {
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <iframe class="Coinvideo" src="@Model.VideoLink"></iframe>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row container">
+    <hr />
+
+    @Html.Raw(Model.Description)
+
+</div>

@@ -1,0 +1,42 @@
+﻿
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div id='myModalContent'>
+            <div class="container ">
+                <h2 class="text-center">Subscribe now</h2>
+                <p>
+                    What will you get for subscribing? 
+                    <br />
+                    <br />
+                    We are not here to fill your inbox with spam and the only information you will receive from us includes:
+                    <ul>
+                        <li>
+                            New Gold and Silver ICO listings.
+                        </li>
+                        <li>
+                            A weekly email that includes:
+                        </li>
+                        <li>
+                            <ul>
+                                <li>Link to the top YouTube video of the week.</li>
+                                <li>Spreadsheet with the top rated ICO’s</li>
+                                <li>Link to the top news article of the week</li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </p>
+                <br />
+
+                <div class="form-group text-center">
+                    @Html.Editor("SubscribeEmail", new { htmlAttributes = new { @class = "form-control", @placeholder = "Please enter your email..." } })
+                    <br />
+                    <input type="button" id="btnSubscribe" class="btn btn-primary form-control" value="Subscribe" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

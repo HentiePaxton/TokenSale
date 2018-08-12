@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=.;Initial Catalog=CoinListing;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Other\\CoinListing\\CoinListing\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="CoinListingEntities-Web.config Connection String" description="CoinListingEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.CoinListing.csdl|res://*/Models.CoinListing.ssdl|res://*/Models.CoinListing.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=CoinListing;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Other\\CoinListing\\CoinListing\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CoinListingEntities']/@connectionString" />
+  </parameter>
+</parameters>

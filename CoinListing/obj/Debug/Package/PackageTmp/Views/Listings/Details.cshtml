@@ -1,0 +1,234 @@
+﻿@model CoinListing.Models.Listing
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Listing</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CoinName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoinName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Token)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Token)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Short_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Short_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WebSiteLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WebSiteLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WhitePaper)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WhitePaper)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalSupply)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalSupply)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoftCap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoftCap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HardCap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HardCap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plaform)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plaform)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuyWith)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyWith)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TwitterLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TwitterLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FacebookLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacebookLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkedInLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkedInLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelegramLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelegramLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RedditLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RedditLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ListingStage.ListingStage1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListingStage.ListingStage1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Progress.Progress1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Progress.Progress1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status.Status1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.Status1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PK_ListingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

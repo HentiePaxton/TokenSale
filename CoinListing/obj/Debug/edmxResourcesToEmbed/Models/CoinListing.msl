@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CoinListingModelStoreContainer" CdmEntityContainer="CoinListingEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="CoinListingModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="CoinListingModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="CoinListingModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="CoinListingModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="CoinListingModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Listings">
+      <EntityTypeMapping TypeName="CoinListingModel.Listing">
+        <MappingFragment StoreEntitySet="Listing">
+          <ScalarProperty Name="RedditLink" ColumnName="RedditLink" />
+          <ScalarProperty Name="TelegramLink" ColumnName="TelegramLink" />
+          <ScalarProperty Name="LinkedInLink" ColumnName="LinkedInLink" />
+          <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
+          <ScalarProperty Name="TwitterLink" ColumnName="TwitterLink" />
+          <ScalarProperty Name="BuyWith" ColumnName="BuyWith" />
+          <ScalarProperty Name="Plaform" ColumnName="Plaform" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="VideoLink" ColumnName="VideoLink" />
+          <ScalarProperty Name="FK_ListingStageID" ColumnName="FK_ListingStageID" />
+          <ScalarProperty Name="HardCap" ColumnName="HardCap" />
+          <ScalarProperty Name="SoftCap" ColumnName="SoftCap" />
+          <ScalarProperty Name="TotalSupply" ColumnName="TotalSupply" />
+          <ScalarProperty Name="WhitePaper" ColumnName="WhitePaper" />
+          <ScalarProperty Name="PreEndDate" ColumnName="PreEndDate" />
+          <ScalarProperty Name="PreStartDate" ColumnName="PreStartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="FK_ProgressID" ColumnName="FK_ProgressID" />
+          <ScalarProperty Name="FK_StatusID" ColumnName="FK_StatusID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="WebSiteLink" ColumnName="WebSiteLink" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Short_Description" ColumnName="Short Description" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="CoinName" ColumnName="CoinName" />
+          <ScalarProperty Name="PK_ListingID" ColumnName="PK_ListingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListingStages">
+      <EntityTypeMapping TypeName="CoinListingModel.ListingStage">
+        <MappingFragment StoreEntitySet="ListingStage">
+          <ScalarProperty Name="ListingStage1" ColumnName="ListingStage" />
+          <ScalarProperty Name="PK_ListingStageID" ColumnName="PK_ListingStageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Progresses">
+      <EntityTypeMapping TypeName="CoinListingModel.Progress">
+        <MappingFragment StoreEntitySet="Progress">
+          <ScalarProperty Name="Progress1" ColumnName="Progress" />
+          <ScalarProperty Name="PK_ProgressID" ColumnName="PK_ProgressID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="CoinListingModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="StatusLevel" ColumnName="StatusLevel" />
+          <ScalarProperty Name="Status1" ColumnName="Status" />
+          <ScalarProperty Name="PK_StatusID" ColumnName="PK_StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subscriptions">
+      <EntityTypeMapping TypeName="CoinListingModel.Subscription">
+        <MappingFragment StoreEntitySet="Subscription">
+          <ScalarProperty Name="Subscribe" ColumnName="Subscribe" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PK_SubscriptionID" ColumnName="PK_SubscriptionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="CoinListingModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,332 @@
+﻿@model IEnumerable<CoinListing.Models.Listing>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id='myModal' class='modal'>
+    @Html.Action("Subscribe")
+</div>
+
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-2">
+            <img src="~/Content/Logo.png" />
+        </div>
+        <div class="col-md-10">
+            <h3>WELCOME TO THE NUMBER 1 GLOBAL ICO LIST</h3>
+            <p style="font-size: 12px;" class="text-left">We have analysed and listed only the best new Initial Coin Offerings and Airdrops. Important to note is that Global Token Sales and related parties do not provide investment, financial, or legal advice. This site is not a substitute for professional advice and is merely a list of all the new and upcoming Initial Coin Offerings and Airdrops. The content provided or linked on this site is thus for informational purposes only.</p>
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <span><b>Active Subscribers: </b><small><b>@ViewBag.SubscriberCount</b></small></span><br />
+                    <span><b>Subscribe now</b> for free ICO updates: <a id="subscribe" href="#">Subscribe now</a></span>
+                </div>
+                <div class="col-md-6">
+                    <div class="search-container">
+                        <input type="text" name="Search" id="searchtxt" value="@ViewBag.searchString" placeholder="Search.." class="form-control searchField" />
+                        <button type="button" class="pagelink"><i class="glyphicon glyphicon-search" id="searchBtn"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <hr />
+    <div class="text-right">
+        <text>Page: </text>
+        @if (ViewBag.ListingPages != null)
+        {
+            for (int a = 1; a <= ViewBag.ListingPages; a++)
+            {
+                if (a.ToString() == ViewBag.ActivePage.ToString())
+                {
+                    <text><b><a class="pagelink pageno" href="#" data-page='@a.ToString()'>@a.ToString()</a></b> | </text>
+                }
+                else
+                {
+                    <text><a class="pagelink pageno" href="#" data-page='@a.ToString()'>@a.ToString()</a> | </text>
+                }
+
+            }
+        }
+    </div>
+
+    @{ int i = 1;}
+    @foreach (var item in Model)
+    {
+        var CustomClass = "";
+        var RibbonText = "Basic";
+        var Progress = "";
+        if (item.Status != null)
+        {
+            if (item.Status.Status1 == "Gold")
+            {
+                CustomClass = "Gold_Status";
+                RibbonText = "Gold";
+            }
+            else if (item.Status.Status1 == "Silver")
+            {
+                CustomClass = "Silver_Status";
+                RibbonText = "Silver";
+            }
+
+            else if (item.Status.Status1 == "Red Hot Gold")
+            {
+                CustomClass = "RedHot_Status";
+                RibbonText = "Red Hot Gold";
+            }
+        }
+
+        if (item.Progress != null)
+        {
+            Progress = item.Progress.Progress1;
+        }
+        double StartDateTicks = 0;
+        double EndDateTicks = 0;
+        double DateTickPerc = 0;
+
+
+
+        var ProgressStart = "";
+        var ProgressEnd = "";
+        if (item.Progress.Progress1 == "Pre-Sale")
+        {
+            if (item.PreStartDate != null)
+            {
+                ProgressStart = item.PreStartDate.Value.ToString("MMMM dd");
+                ProgressEnd = item.PreEndDate.Value.ToString("MMMM dd");
+
+                if (item.PreStartDate != null && item.PreEndDate != null)
+                {
+                    var daysDifferece = (item.PreEndDate.Value - item.PreStartDate.Value).TotalDays;
+                    var daysTodayDifferece = (item.PreEndDate.Value - DateTime.Now).TotalDays;
+
+                    if (daysDifferece > daysTodayDifferece)
+                    {
+                        DateTickPerc = (int)(100 - ((double)(((double)daysTodayDifferece / (double)daysDifferece) * 100)));
+                    }
+
+                }
+
+            }
+        }
+        else
+        {
+            if (item.StartDate != null)
+            {
+                ProgressStart = item.StartDate.Value.ToString("MMMM dd");
+                ProgressEnd = item.EndDate.Value.ToString("MMMM dd");
+
+                if (item.StartDate != null && item.EndDate != null)
+                {
+                    var daysDifferece = (item.EndDate.Value - item.StartDate.Value).TotalDays;
+                    var daysTodayDifferece = (item.EndDate.Value - DateTime.Now).TotalDays;
+
+                    if (daysDifferece > daysTodayDifferece)
+                    {
+                        DateTickPerc = (int)(100 - ((double)(((double)daysTodayDifferece / (double)daysDifferece) * 100)));
+                    }
+
+                }
+            }
+        }
+
+        if (i == 1)
+        {
+            <text><div class="row">
+                    <div class="card col-md-3 listinCard text-center">
+                        <div class="@CustomClass">
+                            <div class="card-body">
+                                <a href='@Url.Action("Details","Home", new { id = item.PK_ListingID})' class="CardLink">
+                                    <div class="Ribbon @CustomClass">@RibbonText</div>
+                                    <img class="card-img-top" src="../@Url.Content(item.Image)" alt="Card image" style="height:150px">
+                                    <h4 class="card-title">@item.CoinName</h4>
+                                    <p class="card-text">@Html.Raw(item.Short_Description)</p>
+                                    <div>
+                                        <small style="float: left">@ProgressStart</small>
+                                        <small style="float: right">@ProgressEnd</small>
+                                    </div>
+                                    <br />
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="@DateTickPerc.ToString()" aria-valuemin="0" aria-valuemax="100" style="width:@DateTickPerc.ToString()%">
+                                            <span class="sr-only">@DateTickPerc.ToString() % Complete</span>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <div class="text-left CardDetails">
+                                    <div class="">
+                                        <label class="bold">Progress: </label>
+                                        <text> @Progress</text>
+                                    </div>
+                                    <div class="">
+                                        <label class="bold">Total Supply: </label>
+                                        <text> @item.TotalSupply </text>
+                                    </div>
+                                    <div class="">
+                                        <label class="bold">HardCap: </label>
+                                        <text> @item.HardCap</text>
+                                    </div>
+                                    <div class="">
+                                        <label class="bold">Read Whitepaper: </label>
+                                        <a target="_blank" href="@item.WhitePaper" class="bold">Whitepaper</a>
+                                    </div>
+                                    <div class="">
+                                        <label class="bold">Visit Website: </label>
+                                        <a target="_blank" href="@item.WebSiteLink" class="bold">Website</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+            </text>
+        }
+        else
+        {
+            <text><div class="card col-md-3 listinCard text-center">
+                    <div class="@CustomClass">
+                        <div class="card-body">
+                            <a href='@Url.Action("Details","Home", new { id = item.PK_ListingID})' class="CardLink">
+                                <div class="Ribbon @CustomClass">@RibbonText</div>
+                                <img class="card-img-top" src="../@Url.Content(item.Image)" alt="Card image" style="height:150px">
+                                <h4 class="card-title">@item.CoinName</h4>
+                                <p class="card-text">@Html.Raw(item.Short_Description)</p>
+                                <div>
+                                    <small style="float: left">@ProgressStart</small>
+                                    <small style="float: right">@ProgressEnd</small>
+                                </div>
+                                <br />
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="@DateTickPerc.ToString()" aria-valuemin="0" aria-valuemax="100" style="width:@DateTickPerc.ToString()%">
+                                        <span class="sr-only">@DateTickPerc.ToString() % Complete</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="text-left CardDetails">
+                                <div class="">
+                                    <label class="bold">Progress: </label>
+                                    <text> @Progress</text>
+                                </div>
+                                <div class="">
+                                    <label class="bold">Total Supply: </label>
+                                    <text> @item.TotalSupply </text>
+                                </div>
+                                <div class="">
+                                    <label class="bold">HardCap: </label>
+                                    <text> @item.HardCap</text>
+                                </div>
+                                <div class="">
+                                    <label class="bold">Read Whitepaper: </label>
+                                    <a target="_blank" href="@item.WhitePaper" class="bold">Whitepaper</a>
+                                </div>
+                                <div class="">
+                                    <label class="bold">Visit Website: </label>
+                                    <a target="_blank" href="@item.WebSiteLink" class="bold">Website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </text>
+        }
+        i++;
+
+        if (i == 5)
+        {
+            @Html.Raw("</div>")
+            i = 1;
+        }
+
+
+
+    }
+
+</div>
+
+<div class="text-right">
+    <text>Page: </text>
+    @if (ViewBag.ListingPages != null)
+    {
+        for (int a = 1; a <= ViewBag.ListingPages; a++)
+        {
+            if (a.ToString() == ViewBag.ActivePage.ToString())
+            {
+                <text><b><a class="pagelink pageno" href="#" data-page='@a.ToString()'>@a.ToString()</a></b> | </text>
+            }
+            else
+            {
+                <text><a class="pagelink pageno" href="#" data-page='@a.ToString()'>@a.ToString()</a>  | </text>
+            }
+
+        }
+    }
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            @if(ViewBag.CookieVisited == null)
+            {
+                <text>$('#myModal').modal();</text>
+            }
+
+
+            $(document).on('click', '#subscribe', function (event) {
+                event.preventDefault();
+                $('#myModal').modal();
+
+            });
+
+            $(document).on('keypress', '#searchtxt', function (e) {
+                debugger;
+                if (e.which == 13) {
+                    $($('.pagelink')[0]).click();
+                }
+            });
+
+            $(document).on('click', '.pagelink', function (event) {
+
+                event.preventDefault();
+
+                var page = "1";
+
+                if ($(this).hasClass('pageno')) {
+                    page = $(this).attr('data-page');
+                }
+
+                var search = $('#searchtxt').val();
+
+                window.location.href = '@Url.Action(ViewBag.ActionName,"Home")?searchString=_search&page=_page'.replace('_search', search).replace('_page', page);
+
+            });
+
+            $(document).on('click', '#btnSubscribe', function () {
+                var email = $('#SubscribeEmail').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SubscribeEmail")',
+                    dataType: 'json',
+                    data: { email: email },
+                    success: function (data) {
+                        $('#myModal').modal("hide")
+                        alert("Subscription Saved!");
+                    },
+                    error: function (ex) {
+                        var r = jQuery.parseJSON(response.responseText);
+                        alert("Message: " + r.Message);
+                        alert("StackTrace: " + r.StackTrace);
+                        alert("ExceptionType: " + r.ExceptionType);
+                    }
+                });
+            });
+        });
+    </script>
+}
