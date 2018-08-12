@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<form method="post">
+    <br />
+    <h1>@ViewBag.Success</h1>
+    <textarea name="email" id="mytextarea">@ViewBag.Email</textarea>
+    <br />
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Test Email</label>
+        <div class="col-md-10">
+            <input type="text" name="textEmail" value="@ViewBag.Subject" class="form-control" />
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Send to entire Subscribe list</label>
+        <div class="col-md-10">
+            <input type="checkbox" value="true" name="allEmails" class="form-control" />
+        </div>
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-primary"  value="Submit">Submit</button>
+</form>
+
+
+@section scripts{
+    <script src="~/Scripts/tinymce/tinymce.js"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '#mytextarea',
+            theme: 'modern',
+            width: 600,
+            height: 300,
+            plugins: [
+                'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'save table contextmenu directionality emoticons template paste textcolor'
+            ],
+            content_css: 'css/content.css',
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
+        });
+    </script>
+}

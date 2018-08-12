@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="upcoming,coin,token,crypto,ico,crowdsale,presale">
+    <meta name="description" content="Global Token Sales provides a curated list of Initial Coin Offerings (ICOs). We ensure quality crypto projects are listed for their token or coin sales and give important information such as hard cap, total token supply and duration of the upcoming Presale and Crowdsale so that investors can make the best decisions possible" />
+    <link rel="shortcut icon" type="image/png" href="~/Content/Logo.png" />
+    <link rel="canonical" href="https://www.globaltokensales.com/home/index"/>
+    <title>Global Token Sales</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Global Token Sales", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Active ICO's", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Upcoming ICO's", "Upcoming", "Home")</li>
+                    <li>@Html.ActionLink("Crowdsale News", "Index", "RSSFeed")</li>
+                    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Listing", "Index", "Listings")</li>
+                        <li>@Html.ActionLink("Drafts", "Drafts", "Home")</li>
+                        <li>@Html.ActionLink("SendEmail", "SendEmail", "Listings")</li>
+                    }
+                    <li><a href="https://goo.gl/forms/siLwssjP2TetNvcP2" target="_blank">List Your ICO</a></li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Global Token Sales</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/plugins")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118090722-1"></script>
+<script>
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-118090722-1');
+</script>
+
+
+<script type="application/ld+json">
+    {
+    "@Html.Raw("@context")": "http://schema.org",
+    "@Html.Raw("@type")": "WebSite",
+    "url": "https://www.globaltokensales.com/",
+    "potentialAction": {
+    "@Html.Raw("@type")": "SearchAction",
+    "target": "https://www.globaltokensales.com/?searchString={search_term_string}",
+    "query-input": "required name=search_term_string"
+    }
+    }
+</script>
